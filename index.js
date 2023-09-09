@@ -1,10 +1,10 @@
 let array = { nama: [], umur: [], uangSangu: [] };
 let modal = document.getElementById("editModal");
 
-var registerButton = document.getElementById("registerButton");
-var namaInput = document.getElementById("nama");
-var umurInput = document.getElementById("umur");
-var uangSanguInput = document.getElementById("uangSangu");
+let registerButton = document.getElementById("registerButton");
+let namaInput = document.getElementById("nama");
+let umurInput = document.getElementById("umur");
+let uangSanguInput = document.getElementById("uangSangu");
 
 namaInput.addEventListener("input", toggleRegisterButton);
 umurInput.addEventListener("input", toggleRegisterButton);
@@ -13,9 +13,9 @@ uangSanguInput.addEventListener("input", toggleRegisterButton);
 // button enable disable untuk menghindari jika ada form yang belum terisi
 // dan mengurangi validasi pada form register
 function toggleRegisterButton() {
-  var nama = namaInput.value;
-  var umur = umurInput.value;
-  var uangSangu = uangSanguInput.value;
+  let nama = namaInput.value;
+  let umur = umurInput.value;
+  let uangSangu = uangSanguInput.value;
 
   if (nama !== "" && umur !== "" && uangSangu !== "") {
     registerButton.disabled = false;
@@ -52,14 +52,14 @@ function hitungRataRata(arr) {
   if (arr.length === 0) {
     return 0;
   }
-  var total = arr.reduce((acc, val) => acc + val, 0); // acc untuk acculator yang diisi dengan angka 0 dan val adalah value dari array
+  let total = arr.reduce((acc, val) => acc + val, 0); // acc untuk acculator yang diisi dengan angka 0 dan val adalah value dari array
   return total / arr.length;
 }
 
 // Fungsi untuk menghapus data pendaftar berdasarkan indeks
 function hapusPendaftar(index) {
   // Konfirmasi pengguna sebelum menghapus data
-  var confirmation = confirm(
+  let confirmation = confirm(
     "Apakah Anda yakin ingin menghapus data pendaftar ini?"
   );
 
@@ -74,35 +74,35 @@ function hapusPendaftar(index) {
 // function untuk mengolah data pendaftar pada modal
 function editPendaftar(index) {
   // Mendapatkan data pendaftar berdasarkan indeks
-  var nama = array.nama[index];
-  var umur = array.umur[index];
-  var uangSangu = array.uangSangu[index];
+  let nama = array.nama[index];
+  let umur = array.umur[index];
+  let uangSangu = array.uangSangu[index];
 
   // Menampilkan modal pengeditan data
-  var namaInput = document.getElementById("editNama");
-  var umurInput = document.getElementById("editUmur");
-  var uangSanguInput = document.getElementById("editUangSangu");
+  let namaInput = document.getElementById("editNama");
+  let umurInput = document.getElementById("editUmur");
+  let uangSanguInput = document.getElementById("editUangSangu");
 
   namaInput.value = nama;
   umurInput.value = umur;
   uangSanguInput.value = uangSangu;
 
   // Set nilai data-index pada modal
-  var editModal = document.getElementById("editModal");
+  let editModal = document.getElementById("editModal");
   editModal.setAttribute("data-index", index);
 }
 
 // Function untuk menyimpan perubahan
 function simpanPerubahan() {
   // Dapatkan nilai yang diubah dalam modal
-  var editNama = document.getElementById("editNama").value;
-  var editUmur = document.getElementById("editUmur").value;
-  var editUangSangu = document.getElementById("editUangSangu").value;
+  let editNama = document.getElementById("editNama").value;
+  let editUmur = document.getElementById("editUmur").value;
+  let editUangSangu = document.getElementById("editUangSangu").value;
   const alertContainerId = "alertModal";
   const alertManager = new AlertManager(alertContainerId);
 
   // Dapatkan nilai data-index dari modal
-  var dataIndex = document
+  let dataIndex = document
     .getElementById("editModal")
     .getAttribute("data-index");
 
@@ -185,7 +185,7 @@ async function getDataPendaftar() {
 
 // menampilkan daftar/list Pendaftar
 function listPendaftar() {
-  var container = document.getElementById("table_body");
+  let container = document.getElementById("table_body");
   container.innerHTML = "";
 
   //looping value pendaftar berdasarkan input pada array
@@ -207,9 +207,9 @@ function listPendaftar() {
     }
   }
 
-  var keterangan = document.getElementById("keterangan");
-  var rataRataUmur = Math.floor(hitungRataRata(array.umur.map(Number))); // angka dibulatkan kebawah dengan math.floor
-  var rataRataUangSangu = Math.floor(
+  let keterangan = document.getElementById("keterangan");
+  let rataRataUmur = Math.floor(hitungRataRata(array.umur.map(Number))); // angka dibulatkan kebawah dengan math.floor
+  let rataRataUangSangu = Math.floor(
     hitungRataRata(array.uangSangu.map(Number))
   ); // angka dibulatkan kebawah dengan math.floor
 
